@@ -9,7 +9,10 @@
         "postinstall": "rm -rf ./node_modules/expo/node_modules/expo-font/ && rm -rf node_modules/@celo/dappkit/node_modules/expo*",
         "prettier": "prettier --write ./**/*.{ts,tsx}",
         "eslint": "eslint --fix ./**/*.{ts,tsx}",
-        "test": "echo \"Not available yet.\""
+        "test": "echo \"Not available yet.\"",
+        "tsc": "tsc",
+        "lint": "tslint -p tsconfig.json 'src*/**/*.tsx' 'src*/**/*.ts'",
+        "lint:fix": "tslint -p tsconfig.json --fix 'src*/**/*.tsx' 'src*/**/*.ts'"
     },
     "engines": {
         "node": "14.15.1"
@@ -100,6 +103,13 @@
         "jest-expo": "^40.0.0",
         "prettier": "2.2.0",
         "react-native-bundle-visualizer": "2.2.1",
+        "react-native-typescript-transformer": "^1.2.13",
+        "tslint": "^6.1.3",
+        "tslint-config-airbnb-base": "^0.3.0",
+        "tslint-config-prettier": "^1.18.0",
+        "tslint-config-standard": "^9.0.0",
+        "tslint-etc": "^1.13.9",
+        "tslint-react": "^5.0.0",
         "typescript": "~4.0.0"
     },
     "resolutions": {
