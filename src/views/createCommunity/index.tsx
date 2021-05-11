@@ -842,13 +842,16 @@ function CreateCommunityScreen() {
                 name="info-with-circle"
                 size={18}
                 color={ipctColors.blueRibbon}
-                style={{ marginLeft: 26 }}
             />
 
             <Text
                 style={[
                     styles.createCommunityDescription,
-                    { flexWrap: 'wrap', marginHorizontal: 34 },
+                    {
+                        flexWrap: 'wrap',
+                        marginHorizontal: 22,
+                        alignItems: 'center',
+                    },
                 ]}
             >
                 {i18n.t('createCommunityAlert')}
@@ -856,12 +859,7 @@ function CreateCommunityScreen() {
             <TouchableOpacity
                 onPress={() => setIsAlertVisible(!isAlertVisible)}
             >
-                <Icon
-                    name="close"
-                    size={18}
-                    color={ipctColors.almostBlack}
-                    style={{ marginRight: 26 }}
-                />
+                <Icon name="close" size={18} color={ipctColors.almostBlack} />
             </TouchableOpacity>
         </View>
     );
@@ -1714,7 +1712,7 @@ const styles = StyleSheet.create({
     createCommunityDescription: {
         fontFamily: 'Inter-Regular',
         fontSize: 14,
-        lineHeight: 24,
+        lineHeight: 18,
     },
     uploadContainer: {
         flexDirection: 'row',
@@ -1779,19 +1777,19 @@ const styles = StyleSheet.create({
         borderRadius: 6,
     },
     createCommunityAlert: {
-        flex: 1,
         flexDirection: 'row',
         alignItems: 'flex-start',
         justifyContent: 'space-around',
         height: 80,
         width: '90%',
         marginHorizontal: 20,
-        marginTop: 20,
+        marginTop: 18,
         borderColor: ipctColors.blueRibbon,
         borderRadius: 8,
         borderWidth: 2,
         borderStyle: 'solid',
-        paddingTop: 16,
+        paddingVertical: 16,
+        paddingHorizontal: 24,
     },
     errorText: {
         fontFamily: 'Inter-Regular',

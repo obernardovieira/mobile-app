@@ -2,7 +2,7 @@ export default {
     testnetWarning:
         'Lembre-se que está a usar a testnet Alfajores - os balanços não são reais.',
     pendingApprovalMessage:
-        'Estamos revisando seu envio e entraremos em contato em X dias ou menos. Se você tiver outras perguntas, visite nossa Central de Ajuda para ler nosso F.A.Q.s ou enviar um tíquete.',
+        'Estamos revisando seu envio e entraremos em contato em 14 dias ou menos. Se você tiver outras perguntas, visite nossa Central de Ajuda para ler nosso F.A.Q.s ou enviar um tíquete.',
     pendingApproval: 'Pedido Pendente',
     fullDashboard: 'Painel Completo',
     editCommunityDetails: 'Editar detalhes da comunidade',

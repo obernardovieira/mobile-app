@@ -2,7 +2,7 @@ export default {
     testnetWarning:
         "A friendly reminder you're using the Alfajores network build - the balances are not real.",
     pendingApprovalMessage:
-        'We are reviewing your submission and will contact you in X days or less. If you have any additional questions visit our Help Center to read our F.A.Q.s or submit a ticket.',
+        'We are reviewing your submission and will contact you in 14 days or less. If you have any additional questions visit our Help Center to read our F.A.Q.s or submit a ticket.',
     pendingApproval: 'Pending Approval',
     fullDashboard: 'Full Dashboard',
     editCommunityDetails: 'Edit community details',
