@@ -9,6 +9,7 @@ import Input from 'components/core/Input';
 import Select from 'components/core/Select';
 import CloseStorySvg from 'components/svg/CloseStorySvg';
 import BackSvg from 'components/svg/header/BackSvg';
+import * as FileSystem from 'expo-file-system';
 import * as ImagePicker from 'expo-image-picker';
 import * as Location from 'expo-location';
 import { celoNetwork, imageTargets, Screens } from 'helpers/constants';
@@ -38,7 +39,6 @@ import {
     View,
     Image,
     FlatList,
-    TextInputEndEditingEventData,
     TouchableOpacity,
     Dimensions,
     KeyboardAvoidingView,
@@ -57,7 +57,7 @@ import {
 } from 'react-native-paper';
 import EIcon from 'react-native-vector-icons/Entypo';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { batch, useDispatch, useSelector, useStore } from 'react-redux';
+import { batch, useDispatch, useSelector } from 'react-redux';
 import * as Sentry from 'sentry-expo';
 import Api from 'services/api';
 import CacheStore from 'services/cacheStore';
@@ -272,6 +272,11 @@ function CreateCommunityScreen() {
             kit
         );
         return receipt;
+    };
+
+    const checkFileSize = async (fileURI: string) => {
+        const fileSizeInBytes = await FileSystem.getInfoAsync(fileURI);
+        return fileSizeInBytes;
     };
 
     const submitNewCommunity = async () => {
@@ -544,16 +549,28 @@ function CreateCommunityScreen() {
         cb: Dispatch<React.SetStateAction<string>>,
         cbv: Dispatch<React.SetStateAction<boolean>>
     ) => {
-        const result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ImagePicker.MediaTypeOptions.Images,
-            // allowsEditing: true,
-            // aspect: [1, 1],
-            quality: 1,
-        });
+        try {
+            const result = await ImagePicker.launchImageLibraryAsync({
+                mediaTypes: ImagePicker.MediaTypeOptions.Images,
+                quality: 1,
+            });
 
-        if (!result.cancelled) {
-            cb(result.uri);
-            cbv(true);
+            if (!result.cancelled) {
+                const fileSize = await checkFileSize(result.uri);
+                if (fileSize.size && fileSize.size < 4000000) {
+                    cb(result.uri);
+                    cbv(true);
+                } else {
+                    throw new Error();
+                }
+            }
+        } catch (err) {
+            Alert.alert(
+                i18n.t('failure'),
+                i18n.t('imageSizeTooBig'),
+                [{ text: 'OK' }],
+                { cancelable: false }
+            );
         }
     };
 

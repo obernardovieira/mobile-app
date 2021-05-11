@@ -12,6 +12,7 @@ import AvatarPlaceholderSvg from 'components/svg/AvatarPlaceholderSvg';
 import CheckSvg from 'components/svg/CheckSvg';
 import ProfileSvg from 'components/svg/ProfileSvg';
 import BackSvg from 'components/svg/header/BackSvg';
+import { FileSystem } from 'expo';
 import Constants from 'expo-constants';
 import * as Device from 'expo-device';
 import * as ImagePicker from 'expo-image-picker';
@@ -237,16 +238,33 @@ function ProfileScreen() {
         }
     };
 
-    const pickImage = async () => {
-        const result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ImagePicker.MediaTypeOptions.Images,
-            // allowsEditing: true,
-            // aspect: [4, 3],
-            quality: 1,
-        });
+    const checkFileSize = async (fileURI: string) => {
+        const fileSizeInBytes = await FileSystem.getInfoAsync(fileURI);
+        return fileSizeInBytes;
+    };
 
-        if (!result.cancelled) {
-            handleChangeAvatar(result.uri);
+    const pickImage = async () => {
+        try {
+            const result = await ImagePicker.launchImageLibraryAsync({
+                mediaTypes: ImagePicker.MediaTypeOptions.Images,
+                quality: 1,
+            });
+
+            if (!result.cancelled) {
+                const fileSize = await checkFileSize(result.uri);
+                if (fileSize.size && fileSize.size < 4000000) {
+                    handleChangeAvatar(result.uri);
+                } else {
+                    throw new Error();
+                }
+            }
+        } catch (err) {
+            Alert.alert(
+                i18n.t('failure'),
+                i18n.t('imageSizeTooBig'),
+                [{ text: 'OK' }],
+                { cancelable: false }
+            );
         }
     };
 
