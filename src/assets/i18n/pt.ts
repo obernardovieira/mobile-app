@@ -151,8 +151,8 @@ export default {
     scanningInvalidAddress: 'Esse endereço parece inválido!',
     select: 'Selecionar',
     errorGettingGPSLocation: 'Ocorreu um erro ao obter a localização GPS.',
-    imageSizeTooBig:
-        'Por favor verifique se a imagem que está usando é menor que 2MBs.',
+    wrongImageDimensions:
+        'Por favor verifique se a imagem possui as dimensões corretas.',
     errorWhileLoadingRestart: 'Ocorreu eu erro ao iniciar. Por favor reinicie.',
     userWasRemoved: '{{user}} foi removido com sucesso!',
     errorRemovingBeneficiary:

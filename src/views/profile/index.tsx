@@ -12,9 +12,9 @@ import AvatarPlaceholderSvg from 'components/svg/AvatarPlaceholderSvg';
 import CheckSvg from 'components/svg/CheckSvg';
 import ProfileSvg from 'components/svg/ProfileSvg';
 import BackSvg from 'components/svg/header/BackSvg';
-import { FileSystem } from 'expo';
 import Constants from 'expo-constants';
 import * as Device from 'expo-device';
+import * as FileSystem from 'expo-file-system';
 import * as ImagePicker from 'expo-image-picker';
 import * as Linking from 'expo-linking';
 import { imageTargets } from 'helpers/constants';
@@ -251,8 +251,8 @@ function ProfileScreen() {
             });
 
             if (!result.cancelled) {
-                const fileSize = await checkFileSize(result.uri);
-                if (fileSize.size && fileSize.size < 4000000) {
+                const { height, width } = result;
+                if (height > 300 && width > 300) {
                     handleChangeAvatar(result.uri);
                 } else {
                     throw new Error();
@@ -261,7 +261,7 @@ function ProfileScreen() {
         } catch (err) {
             Alert.alert(
                 i18n.t('failure'),
-                i18n.t('imageSizeTooBig'),
+                i18n.t('wrongImageDimensions'),
                 [{ text: 'OK' }],
                 { cancelable: false }
             );

@@ -156,7 +156,7 @@ export default {
     paymentSent: 'Payment done!',
     scanningInvalidAddress: 'You are trying to scan an invalid address!',
     select: 'Select',
-    imageSizeTooBig: 'Please make sure the image size is smaller than 2MBs.',
+    wrongImageDimensions: 'Please make sure the image has the right dimensions',
     errorGettingGPSLocation:
         'An error happened while getting the GPS location.',
     errorWhileLoadingRestart:

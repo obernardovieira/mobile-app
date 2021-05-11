@@ -556,18 +556,18 @@ function CreateCommunityScreen() {
             });
 
             if (!result.cancelled) {
-                const fileSize = await checkFileSize(result.uri);
-                if (fileSize.size && fileSize.size < 4000000) {
+                const { height, width } = result;
+                if (height > 784 && width > 784) {
                     cb(result.uri);
                     cbv(true);
-                } else {
-                    throw new Error();
                 }
+            } else {
+                throw new Error();
             }
         } catch (err) {
             Alert.alert(
                 i18n.t('failure'),
-                i18n.t('imageSizeTooBig'),
+                i18n.t('wrongImageDimensions'),
                 [{ text: 'OK' }],
                 { cancelable: false }
             );
