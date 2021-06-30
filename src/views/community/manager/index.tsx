@@ -333,6 +333,7 @@ function CommunityManagerScreen() {
                 }}
             >
                 <ActivityIndicator
+                    testID="activityIndicator"
                     animating
                     size="large"
                     color={ipctColors.blueRibbon}

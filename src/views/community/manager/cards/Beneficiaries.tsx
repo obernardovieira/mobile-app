@@ -26,7 +26,7 @@ function Beneficiaries(props: IBeneficiariesProps) {
     } = props;
 
     return (
-        <View>
+        <View testID="beneficiariesCard">
             <Card>
                 <Card.Content>
                     <Headline
@@ -43,6 +43,7 @@ function Beneficiaries(props: IBeneficiariesProps) {
                     </Headline>
                     <Button
                         modeType="gray"
+                        testID="addedBeneficiaryBtn"
                         bold
                         disabled={beneficiaries === 0}
                         style={{ marginVertical: 5 }}
@@ -54,12 +55,13 @@ function Beneficiaries(props: IBeneficiariesProps) {
                     </Button>
                     <Button
                         modeType="gray"
+                        testID="removedBeneficiaryBtn"
                         bold
                         disabled={removedBeneficiaries === 0}
                         style={{ marginVertical: 5 }}
-                        onPress={() =>
-                            navigation.navigate(Screens.RemovedBeneficiary)
-                        }
+                        onPress={() => {
+                            navigation.navigate(Screens.RemovedBeneficiary);
+                        }}
                     >
                         {i18n.t('removed')} ({removedBeneficiaries})
                     </Button>
@@ -67,19 +69,21 @@ function Beneficiaries(props: IBeneficiariesProps) {
                         {hasFundsToNewBeneficiary ? (
                             <Button
                                 modeType="green"
+                                testID="addBeneficiaryBtn"
                                 bold
                                 style={{
                                     marginVertical: 5,
                                 }}
-                                onPress={() =>
-                                    navigation.navigate(Screens.AddBeneficiary)
-                                }
+                                onPress={() => {
+                                    navigation.navigate(Screens.AddBeneficiary);
+                                }}
                             >
                                 {i18n.t('addBeneficiary')}
                             </Button>
                         ) : (
                             <Button
                                 modeType="default"
+                                testID="noFundsBtn"
                                 icon="alert"
                                 style={{
                                     marginVertical: 5,
@@ -97,7 +101,9 @@ function Beneficiaries(props: IBeneficiariesProps) {
                                 {i18n.t('addBeneficiary')}
                             </Button>
                         )}
-                        {isSuspeciousDetected && <SuspiciousActivity />}
+                        {isSuspeciousDetected && (
+                            <SuspiciousActivity testID="suspiciousActivityView" />
+                        )}
                     </View>
                 </Card.Content>
             </Card>

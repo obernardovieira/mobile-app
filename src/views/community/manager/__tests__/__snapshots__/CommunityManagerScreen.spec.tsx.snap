@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CommunityManager test suite should add Beneficiary when address is valid 1`] = `ShallowWrapper {}`;
+
+exports[`CommunityManager test suite should navigate to Add Beneficiary screen when addBeneficiary button is pressed 1`] = `ShallowWrapper {}`;
+
+exports[`CommunityManager test suite should navigate to Added Beneficiary screen when addedBeneficiary button is pressed 1`] = `ShallowWrapper {}`;
+
+exports[`CommunityManager test suite should navigate to Removed Beneficiary screen when removedBeneficiary button is pressed 1`] = `ShallowWrapper {}`;
+
+exports[`CommunityManager test suite should render Beneficiary card when community is valid 1`] = `ShallowWrapper {}`;
+
+exports[`CommunityManager test suite should render CommunityManager screen correctly 1`] = `ShallowWrapper {}`;
+
+exports[`CommunityManager test suite should render Manager card when community is valid 1`] = `ShallowWrapper {}`;
