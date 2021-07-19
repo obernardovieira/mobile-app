@@ -8,6 +8,7 @@
         "orientation": "portrait",
         "icon": "./src/assets/images/logo.png",
         "scheme": "impactmarket",
+        "userInterfaceStyle": "automatic",
         "splash": {
             "resizeMode": "native",
             "backgroundColor": "#2362FB",
