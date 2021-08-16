@@ -33,6 +33,7 @@ import {
 } from 'helpers/constants';
 
 import {
+    CommunityCreationAttributes,
     ICommunitiesListStories,
     ICommunityStory,
     IUserAuth,
@@ -281,6 +282,24 @@ interface findCommunityByIdActionClean {
     type: typeof communitiesAction.FIND_BY_ID_CLEAN;
 }
 
+interface createCommunityActionRequest {
+    type: typeof communitiesAction.CREATE_COMMUNITY_REQUEST;
+    payload: {
+        coverImage: string;
+        communityDetails: CommunityCreationAttributes;
+    };
+}
+
+interface createCommunityActionSuccess {
+    type: typeof communitiesAction.CREATE_COMMUNITY_SUCCESS;
+    payload: { community: CommunityAttributes };
+}
+
+interface createCommunityActionFailure {
+    type: typeof communitiesAction.CREATE_COMMUNITY_FAILURE;
+    payload: { error: any };
+}
+
 export type UserActionTypes =
     | UserWalletAction
     | UserSetBalanceAction
@@ -336,7 +355,10 @@ export type CommunitiesActionTypes =
     | findCommunityByIdActionRequest
     | findCommunityByIdActionSuccess
     | findCommunityByIdActionFailure
-    | findCommunityByIdActionClean;
+    | findCommunityByIdActionClean
+    | createCommunityActionRequest
+    | createCommunityActionSuccess
+    | createCommunityActionFailure;
 
 export type IStoreCombinedActionsTypes =
     | UserActionTypes

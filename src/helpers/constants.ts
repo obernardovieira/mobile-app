@@ -105,6 +105,9 @@ export enum communitiesAction {
     FIND_BY_ID_SUCCESS = 'communities/find_by_id_success',
     FIND_BY_ID_FAILURE = 'communities/find_by_id_failure',
     FIND_BY_ID_CLEAN = 'communities/find_by_id_clean',
+    CREATE_COMMUNITY_REQUEST = 'communities/create_community_request',
+    CREATE_COMMUNITY_SUCCESS = 'communities/create_community_success',
+    CREATE_COMMUNITY_FAILURE = 'communities/create_community_failure',
 }
 
 export const SET_VIEW_MANAGER_DETAILS = 'view/managerDetails';
