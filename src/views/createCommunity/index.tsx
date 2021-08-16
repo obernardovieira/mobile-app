@@ -26,6 +26,7 @@ import {
     updateCommunityInfo,
     getCurrencyFromPhoneNumber,
 } from 'helpers/index';
+import { findCommunityByIdRequest } from 'helpers/redux/actions/communities';
 import {
     setCommunityMetadata,
     setUserIsCommunityManager,
@@ -83,7 +84,6 @@ import config from '../../../config';
 import CommunityContractABI from '../../contracts/CommunityABI.json';
 import CommunityBytecode from '../../contracts/CommunityBytecode.json';
 import SubmitCommunity from '../../navigator/header/SubmitCommunity';
-import { findCommunityByIdRequest } from 'helpers/redux/actions/communities';
 
 const countries: {
     [key: string]: {
