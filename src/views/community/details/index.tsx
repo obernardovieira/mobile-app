@@ -18,9 +18,16 @@ import {
 } from 'helpers/redux/actions/communities';
 import { CommunityAttributes } from 'helpers/types/models';
 import { IRootState } from 'helpers/types/state';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Trans } from 'react-i18next';
-import { View, StyleSheet, RefreshControl, StatusBar } from 'react-native';
+import {
+    View,
+    StyleSheet,
+    RefreshControl,
+    StatusBar,
+    Image,
+    Vibration,
+} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import {
     Paragraph,
@@ -37,6 +44,9 @@ import { ipctColors } from 'styles/index';
 
 import config from '../../../../config';
 import Donate from './donate';
+import ViewShot from 'react-native-view-shot';
+import * as Sharing from 'expo-sharing';
+import { Audio } from 'expo-av';
 
 interface ICommunityDetailsScreen {
     route: {
@@ -48,6 +58,7 @@ interface ICommunityDetailsScreen {
     };
 }
 export default function CommunityDetailsScreen(props: ICommunityDetailsScreen) {
+    const viewShot = useRef<ViewShot>();
     const dispatch = useDispatch();
 
     const rates = useSelector((state: IRootState) => state.app.exchangeRates);
@@ -166,12 +177,17 @@ export default function CommunityDetailsScreen(props: ICommunityDetailsScreen) {
                     width: '100%',
                     height: '100%',
                     justifyContent: 'center',
+                    alignItems: 'center',
                 }}
             >
-                <ActivityIndicator
+                {/* <ActivityIndicator
                     animating
                     size="large"
                     color={ipctColors.blueRibbon}
+                /> */}
+                <Image
+                    source={require('./200w.gif')}
+                    style={{ width: 100, height: 100 }}
                 />
             </View>
         );
@@ -194,6 +210,13 @@ export default function CommunityDetailsScreen(props: ICommunityDetailsScreen) {
     } else {
         description = cDescription.slice(0, cDescription.indexOf('\n'));
     }
+
+    const onImageLoad = () => {
+        // viewShot.current.capture().then((uri) => {
+        //     console.log('do something with ', uri);
+        //     Sharing.shareAsync(uri);
+        // });
+    };
 
     return (
         <>
@@ -325,6 +348,25 @@ export default function CommunityDetailsScreen(props: ICommunityDetailsScreen) {
                         </CommuntyStatus>
                     </View>
                 </BaseCommunity>
+                <ViewShot style={{ backgroundColor: 'white' }} ref={viewShot}>
+                    <Text>...Something to rasterize...</Text>
+                    <Image
+                        source={require('../../../../src/assets/images/waitingTx.gif')}
+                        onLoad={onImageLoad}
+                    />
+                </ViewShot>
+                <Button
+                    modeType="default"
+                    onPress={async () => {
+                        const { sound } = await Audio.Sound.createAsync(
+                            require('./sound.wav')
+                        );
+                        sound.playAsync();
+                        Vibration.vibrate(30);
+                    }}
+                >
+                    Donate
+                </Button>
             </ScrollView>
             {Device.brand.toLowerCase() !== 'apple' && (
                 <Donate community={community} />

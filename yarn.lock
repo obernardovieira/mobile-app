@@ -7034,6 +7034,14 @@ expo-asset@~8.3.2:
     path-browserify "^1.0.0"
     url-parse "^1.4.4"
 
+expo-av@~9.2.3:
+  version "9.2.3"
+  resolved "https://registry.yarnpkg.com/expo-av/-/expo-av-9.2.3.tgz#aa54da9c0bc1c3eb0251c1da17f5123f15d4f82f"
+  integrity sha512-If6+JqB2mqMKJxHgN8UAx75CWH4kPAzx2EyP+MFmcPVpcSBJZ/Fj+EfI+GJnk3tHPSB2Eld1IFEYOIJCkN/26Q==
+  dependencies:
+    "@expo/config-plugins" "^3.0.0"
+    expo-modules-core "~0.2.0"
+
 expo-camera@11.2.1:
   version "11.2.1"
   resolved "https://registry.yarnpkg.com/expo-camera/-/expo-camera-11.2.1.tgz#d20dc8803441318a14e03aac6339bb89a6131d41"
@@ -12496,6 +12504,11 @@ react-native-vector-icons@^8.1.0:
     prop-types "^15.7.2"
     yargs "^16.1.1"
 
+react-native-view-shot@3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/react-native-view-shot/-/react-native-view-shot-3.1.2.tgz#8c8e84c67a4bc8b603e697dbbd59dbc9b4f84825"
+  integrity sha512-9u9fPtp6a52UMoZ/UCPrCjKZk8tnkI9To0Eh6yYnLKFEGkRZ7Chm6DqwDJbYJHeZrheCCopaD5oEOnRqhF4L2Q==
+
 react-native-webview@11.6.2:
   version "11.6.2"
   resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-11.6.2.tgz#e19b3325d6777caee29d04eb2edf9b70f0b29915"
@@ -12587,7 +12600,7 @@ reactotron-core-client@2.8.10:
   resolved "https://registry.yarnpkg.com/reactotron-core-client/-/reactotron-core-client-2.8.10.tgz#798f2a7aa9fd7e18e7a510531a613e8ae3008eb0"
   integrity sha512-SYRO4OCutJzfWMnaULUGVyETZnMDCU5ECNflXyM3Z5Gnfxp/wV6d7jYonhfxHdpU/aGb4Eg15C22myOCXSu6HQ==
 
-reactotron-react-native@^5.0.0:
+reactotron-react-native@5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/reactotron-react-native/-/reactotron-react-native-5.0.0.tgz#e495630927cb720940f5d8cc7d768f162b32c1a7"
   integrity sha512-7nLrMkLXU9jiHymbB6oBqf8z+vww1AbDcUdMmLqX0obdIHyC8XJB0yRazWajKQC92kamkL+q2q4mH9HRSsYCEA==
