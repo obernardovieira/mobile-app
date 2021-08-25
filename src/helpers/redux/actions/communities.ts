@@ -1,4 +1,5 @@
 import { communitiesAction } from 'helpers/constants';
+import { CommunityCreationAttributes } from 'helpers/types/endpoints';
 import { CommunityAttributes } from 'helpers/types/models';
 import { CommunitiesActionTypes } from 'helpers/types/redux';
 
@@ -67,5 +68,30 @@ export function findCommunityByIdFailure(): CommunitiesActionTypes {
 export function findCommunityByIdClear(): CommunitiesActionTypes {
     return {
         type: communitiesAction.FIND_BY_ID_CLEAN,
+    };
+}
+export function createCommunityRequest(
+    communityDetails: CommunityCreationAttributes
+): CommunitiesActionTypes {
+    return {
+        type: communitiesAction.CREATE_COMMUNITY_REQUEST,
+        payload: { communityDetails },
+    };
+}
+
+export function createCommunitySuccess(
+    data: CommunityAttributes,
+    error?: any
+): CommunitiesActionTypes {
+    return {
+        type: communitiesAction.CREATE_COMMUNITY_SUCCESS,
+        payload: { data, error },
+    };
+}
+
+export function createCommunityFailure(error: any): CommunitiesActionTypes {
+    return {
+        type: communitiesAction.CREATE_COMMUNITY_FAILURE,
+        payload: { error },
     };
 }

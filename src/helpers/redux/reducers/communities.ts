@@ -5,6 +5,7 @@ import { ICommunitiesState } from 'helpers/types/state';
 const INITIAL_STATE_COMMUNITIES: ICommunitiesState = {
     communities: [],
     community: null,
+    communityCreationError: null,
     refreshing: false,
     reachedEndList: false,
 };
@@ -55,6 +56,22 @@ export const communitiesReducer = (
             return {
                 ...state,
                 community: null,
+                refreshing: false,
+            };
+
+        case communitiesAction.CREATE_COMMUNITY_SUCCESS:
+            return {
+                ...state,
+                community: action.payload.data,
+                communityCreationError: action.payload.error,
+                refreshing: false,
+            };
+
+        case communitiesAction.CREATE_COMMUNITY_FAILURE:
+            console.log(action.payload.error);
+            return {
+                ...state,
+                error: action.payload.error,
                 refreshing: false,
             };
 
